@@ -21,6 +21,10 @@ window.addEventListener('DOMContentLoaded', async () => {
 
       if (detailResponse.ok) {
         const details = await detailResponse.json();
+        // get the picture_url out of the data after being added to class
+        const pictureUrl = details.conference.location.picture_url;
+        const imageTag = document.querySelector('.card-img-top')
+        imageTag.src = pictureUrl
         // get the description out of the data
         const description = details.conference.description;
         const descriptionTag = document.querySelector('.card-text');
