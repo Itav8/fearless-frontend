@@ -15,45 +15,6 @@ function createCard(name, description, pictureUrl, startDate, endDate, locationN
   `;
 }
 
-// window.addEventListener('DOMContentLoaded', async () => {
-//   const url = 'http://localhost:8000/api/conferences/';
-//   // add error code to handle future errors
-//   try {
-//     // fetch function returns a Promise
-//     const response = await fetch(url);
-
-//     if (!response.ok) {
-//       console.log('Something is not okay');
-//     } else {
-//       // want the value the Promise will turn into after await
-//       const data = await response.json();
-
-//       const conference = data.conferences[0];
-//       // selects a tag that matches what's being passed in querySelector
-//       const nameTag = document.querySelector('.card-title');
-//       nameTag.innerHTML = conference.name;
-
-//       const detailUrl = `http://localhost:8000${conference.href}`;
-//       const detailResponse = await fetch(detailUrl);
-
-//       if (detailResponse.ok) {
-//         const details = await detailResponse.json();
-//         // get the picture_url out of the data after being added to class
-//         const pictureUrl = details.conference.location.picture_url;
-//         const imageTag = document.querySelector('.card-img-top');
-//         imageTag.src = pictureUrl;
-//         // get the description out of the data
-//         const description = details.conference.description;
-//         const descriptionTag = document.querySelector('.card-text');
-//         descriptionTag.innerHTML = description;
-//       }
-
-//     }
-//   } catch (e) {
-//     console.error('There is a problem:', error);
-//   }
-// });
-
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
 function createAlert(message, type) {
@@ -74,7 +35,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (!response.ok) {
       const alert = createAlert('Something is not okay');
       alertPlaceholder.append(alert);
-      // console.log('Something is not okay');
     } else {
       const data = await response.json();
 
@@ -105,7 +65,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   } catch (e) {
     const error = createAlert('There is a problem:', e);
     alertPlaceholder.append(error);
-    // console.error('There is a problem:', error);
   }
 
 });
