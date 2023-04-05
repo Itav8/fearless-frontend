@@ -54,6 +54,16 @@ function createCard(name, description, pictureUrl, startDate, endDate, locationN
 //   }
 // });
 
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+function createAlert(message, type) {
+  const wrapper = document.createElement('div')
+
+  wrapper.innerHTML = `${message} ${type}`;
+  alertPlaceholder.append(wrapper);
+}
+
+
 window.addEventListener('DOMContentLoaded', async () => {
 
   const url = 'http://localhost:8000/api/conferences/';
@@ -62,7 +72,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch(url);
 
     if (!response.ok) {
-      console.log('Something is not okay');
+      const alert = createAlert('Something is not okay');
+      alertPlaceholder.append(alert);
+      // console.log('Something is not okay');
     } else {
       const data = await response.json();
 
@@ -91,7 +103,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     }
   } catch (e) {
-    console.error('There is a problem:', error);
+    const error = createAlert('There is a problem:', e);
+    alertPlaceholder.append(error);
+    // console.error('There is a problem:', error);
   }
 
 });
