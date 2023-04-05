@@ -1,5 +1,5 @@
 // // copying the card HTML from the index.html file and putting it into a backtick string
-function createCard(name, description, pictureUrl) {
+function createCard(name, description, pictureUrl, startDate, endDate) {
   return `
   <div class="col">
       <div class="card shadow mb-5 bg-body rounded">
@@ -8,6 +8,7 @@ function createCard(name, description, pictureUrl) {
           <h5 class="card-title">${name}</h5>
           <p class="card-text">${description}</p>
         </div>
+        <div class="card-footer">${startDate}-${endDate}</div>
       </div>
   </div>
   `;
@@ -70,12 +71,16 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         if (detailResponse.ok) {
           const details = await detailResponse.json();
-
           const title = details.conference.name;
           const description = details.conference.description;
           const pictureUrl = details.conference.location.picture_url;
+          const starts = new Date(details.conference.starts);
+          const ends = new Date (details.conference.ends);
+          // returns the expected output
+          const startDate = starts.toLocaleDateString('en-US');
+          const endDate = ends.toLocaleDateString('en-US');
 
-          const html = createCard(title, description, pictureUrl);
+          const html = createCard(title, description, pictureUrl, startDate, endDate);
 
           const col = document.querySelector('.cards');
           col.innerHTML += html;
