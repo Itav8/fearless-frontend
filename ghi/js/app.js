@@ -1,11 +1,12 @@
 // // copying the card HTML from the index.html file and putting it into a backtick string
-function createCard(name, description, pictureUrl, startDate, endDate) {
+function createCard(name, description, pictureUrl, startDate, endDate, locationName) {
   return `
   <div class="col">
       <div class="card shadow mb-5 bg-body rounded">
         <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">${name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${locationName}</h6>
           <p class="card-text">${description}</p>
         </div>
         <div class="card-footer">${startDate}-${endDate}</div>
@@ -74,13 +75,14 @@ window.addEventListener('DOMContentLoaded', async () => {
           const title = details.conference.name;
           const description = details.conference.description;
           const pictureUrl = details.conference.location.picture_url;
+          const locationName = details.conference.location.name
+
           const starts = new Date(details.conference.starts);
           const ends = new Date (details.conference.ends);
-          // returns the expected output
           const startDate = starts.toLocaleDateString('en-US');
           const endDate = ends.toLocaleDateString('en-US');
 
-          const html = createCard(title, description, pictureUrl, startDate, endDate);
+          const html = createCard(title, description, pictureUrl, startDate, endDate, locationName);
 
           const col = document.querySelector('.cards');
           col.innerHTML += html;
