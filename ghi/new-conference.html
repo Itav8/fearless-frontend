@@ -10,8 +10,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <title>New Location :: Conference GO!</title>
-    <script type="module" src="js/new-location.js"></script>
+    <title>New Conference :: Conference GO!</title>
+    <script type="module" src="js/new-conference.js"></script>
   </head>
   <body>
     <header>
@@ -35,16 +35,13 @@
                 <a class="nav-link" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="new-location.html"
+                <a class="nav-link" aria-current="page" href="new-location.html"
                   >New location</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link"
+                  class="nav-link active"
                   aria-current="page"
                   href="new-conference.html"
                   >New Conference</a
@@ -71,8 +68,8 @@
         <div class="row">
           <div class="offset-3 col-6">
             <div class="shadow p-4 mt-4">
-              <h1>Create a new location</h1>
-              <form id="create-location-form">
+              <h2>Create a new conference</h2>
+              <form id="create-conference-form">
                 <div class="form-floating mb-3">
                   <input
                     placeholder="Name"
@@ -86,29 +83,68 @@
                 </div>
                 <div class="form-floating mb-3">
                   <input
-                    placeholder="Room count"
+                    placeholder="mm/dd/yyyy"
                     required
-                    type="number"
-                    name="room_count"
-                    id="room_count"
+                    type="date"
+                    name="starts"
+                    id="starts"
                     class="form-control"
                   />
-                  <label for="room_count">Room count</label>
+                  <label for="starts">Starts</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input
-                    placeholder="City"
+                    placeholder="mm/dd/yyyy"
                     required
-                    type="text"
-                    name="city"
-                    id="city"
+                    type="date"
+                    name="ends"
+                    id="ends"
                     class="form-control"
                   />
-                  <label for="city">City</label>
+                  <label for="ends">Ends</label>
+                </div>
+
+                <div class="mb-3">
+                  <label for="description" class="form-label"
+                    >Description</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    rows="3"
+                  ></textarea>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input
+                    placeholder="Maximum presentations"
+                    required
+                    type="number"
+                    name="max_presentations"
+                    id="max_presentations"
+                    class="form-control"
+                  />
+                  <label for="max_presentations">Maximum presentations</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    placeholder="Maximim attendees"
+                    required
+                    type="number"
+                    name="max_attendees"
+                    id="max_attendees"
+                    class="form-control"
+                  />
+                  <label for="max_attendees">Maximim attendees</label>
                 </div>
                 <div class="mb-3">
-                  <select required id="state" class="form-select" name="state">
-                    <option selected value="">Choose a state</option>
+                  <select
+                    required
+                    id="location"
+                    class="form-select"
+                    name="location"
+                  >
+                    <option selected value="">Choose a location</option>
                   </select>
                 </div>
                 <button class="btn btn-primary">Create</button>
