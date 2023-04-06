@@ -25,7 +25,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
         const formData = new FormData(formTag);
         const json = JSON.stringify(Object.fromEntries(formData));
-        console.log(json);
 
         const conferenceUrl = "http://localhost:8000/api/conferences/";
         const fetchConfig = {

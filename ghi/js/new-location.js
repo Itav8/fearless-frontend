@@ -8,7 +8,6 @@ window.addEventListener("DOMContentLoaded", async () => {
       console.log("It is not okay here");
     } else {
       const data = await response.json();
-      console.log(data)
       // Get the select tag element by its id 'state'
       const selectTag = document.getElementById("state");
       // For each state in the states property of the data
