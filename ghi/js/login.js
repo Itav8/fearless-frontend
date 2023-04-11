@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const fetchOptions = {
       method: "post",
       body: new FormData(form),
+      credentials: "include",
       // headers: {
       //   "Content-Type": "application/json",
       // },
@@ -18,5 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
       console.error(response);
     }
+    const navTag = document.getElementsByClassName("nav-link");
+    navTag.classList.remove("d-none");
   });
 });
