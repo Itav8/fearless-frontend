@@ -2,7 +2,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("login-form");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-
     // const data = Object.fromEntries(new FormData(form));
     const fetchOptions = {
       method: "post",
