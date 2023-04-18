@@ -2,6 +2,26 @@ import React, { useEffect, useState } from "react";
 
 function LocationForm() {
   const [states, setStates] = useState([]);
+  // set the useState hook to store "name" in the component's state, with a default initial value of an empty string
+  const [name, setName] = useState("");
+  const [roomCount, setRoomCount] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+
+  const fetchData = async () => {
+    const url = "http://localhost:8000/api/states/";
+
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const data = await response.json();
+      setStates(data.states);
+    }
+  };
+  // Use effect will run once when landing on this page. This is noted by the empty [] depedency list.
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,11 +54,6 @@ function LocationForm() {
     }
   };
 
-  // set the useState hook to store "name" in the component's state, with a default initial value of an empty string
-  const [name, setName] = useState("");
-  const [roomCount, setRoomCount] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
   // create the handleNameChange method to take what the user inputs into the form and store it in the state's "name" variable
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -59,22 +74,6 @@ function LocationForm() {
     const value = event.target.value;
     setState(value);
   };
-
-  const fetchData = async () => {
-    const url = "http://localhost:8000/api/states/";
-
-    const response = await fetch(url);
-
-    if (response.ok) {
-      const data = await response.json();
-      setStates(data.states);
-    }
-  };
-
-  // Use effect will run once when landing on this page. This is noted by the empty [] depedency list.
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div className="row">
