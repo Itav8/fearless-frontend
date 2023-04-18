@@ -170,9 +170,9 @@ function ConferenceForm() {
                 className="form-select"
               >
                 <option value="">Choose a location</option>
-                {locations.map((location) => {
+                {locations.map((location, i) => {
                   return (
-                    <option key={location.id} value={location.id}>
+                    <option key={i} value={location.href}>
                       {location.name}
                     </option>
                   );
