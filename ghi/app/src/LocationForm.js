@@ -3,6 +3,63 @@ import React, { useEffect, useState } from "react";
 function LocationForm() {
   const [states, setStates] = useState([]);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {};
+    data.room_count = roomCount;
+    data.name = name;
+    data.city = city;
+    data.state = state;
+    console.log(data);
+
+    const locationUrl = "http://localhost:8000/api/locations/";
+    const fetchConfig = {
+      method: "post",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const response = await fetch(locationUrl, fetchConfig);
+    if (response.ok) {
+      const newLocation = await response.json();
+      console.log(newLocation);
+
+      setName("");
+      setRoomCount("");
+      setCity("");
+      setState("");
+    }
+  };
+
+  // set the useState hook to store "name" in the component's state, with a default initial value of an empty string
+  const [name, setName] = useState("");
+  const [roomCount, setRoomCount] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  // create the handleNameChange method to take what the user inputs into the form and store it in the state's "name" variable
+  const handleNameChange = (event) => {
+    const value = event.target.value;
+    setName(value);
+  };
+
+  const handleRoomCountChange = (event) => {
+    const value = event.target.value;
+    setRoomCount(value);
+  };
+
+  const handleCityChange = (event) => {
+    const value = event.target.value;
+    setCity(value);
+  };
+
+  const handleStateChange = (event) => {
+    const value = event.target.value;
+    setState(value);
+  };
+
   const fetchData = async () => {
     const url = "http://localhost:8000/api/states/";
 
@@ -24,9 +81,11 @@ function LocationForm() {
       <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
           <h1>Create a new location</h1>
-          <form id="create-location-form">
+          <form onSubmit={handleSubmit} id="create-location-form">
             <div className="form-floating mb-3">
               <input
+                value={name}
+                onChange={handleNameChange}
                 placeholder="Name"
                 required
                 type="text"
@@ -38,6 +97,8 @@ function LocationForm() {
             </div>
             <div className="form-floating mb-3">
               <input
+                value={roomCount}
+                onChange={handleRoomCountChange}
                 placeholder="Room count"
                 required
                 type="number"
@@ -49,6 +110,8 @@ function LocationForm() {
             </div>
             <div className="form-floating mb-3">
               <input
+                value={city}
+                onChange={handleCityChange}
                 placeholder="City"
                 required
                 type="text"
@@ -59,7 +122,14 @@ function LocationForm() {
               <label htmlFor="city">City</label>
             </div>
             <div className="mb-3">
-              <select required name="state" id="state" className="form-select">
+              <select
+                value={state}
+                onChange={handleStateChange}
+                required
+                name="state"
+                id="state"
+                className="form-select"
+              >
                 <option value="">Choose a state</option>
                 {states.map((state) => {
                   return (
