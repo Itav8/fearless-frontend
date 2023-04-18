@@ -4,9 +4,6 @@ import LocationForm from "./LocationForm";
 import ConferenceForm from "./ConferenceForm";
 import AttendConferenceForm from "./AttendConferenceForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import { createRoot } from "./react-dom/client";
-
-// const root = createRoot(document.getElementById("root"))
 
 function App(props) {
   if (props.attendees === undefined) {
