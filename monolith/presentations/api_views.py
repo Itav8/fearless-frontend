@@ -84,13 +84,14 @@ def api_list_presentations(request, conference_id):
         # Get the Conference object and put it in the content dict
         try:
             conference = Conference.objects.get(id=conference_id)
+            print(conference)
             content["conference"] = conference
         except Conference.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid conference id"},
                 status=400,
             )
-
+        print(content)
         presentation = Presentation.create(**content)
         return JsonResponse(
             presentation,

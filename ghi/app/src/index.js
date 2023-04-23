@@ -29,5 +29,5 @@ async function loadAttendees() {
     console.error(response);
   }
 }
-
+          
 loadAttendees();

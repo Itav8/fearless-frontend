@@ -31,7 +31,6 @@ function LocationForm() {
     data.name = name;
     data.city = city;
     data.state = state;
-    console.log(data);
 
     const locationUrl = "http://localhost:8000/api/locations/";
     const fetchConfig = {
