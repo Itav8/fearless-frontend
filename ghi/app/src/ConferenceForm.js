@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ConferenceForm() {
+  const navigate = useNavigate();
   const [locations, setLocations] = useState([]);
 
   //Notice that we can condense all formData
@@ -44,7 +46,7 @@ function ConferenceForm() {
     };
 
     const response = await fetch(url, fetchConfig);
-
+    
     if (response.ok) {
       //The single formData object
       //also allows for easier clearing of data
@@ -57,6 +59,9 @@ function ConferenceForm() {
         max_attendees: "",
         location: "",
       });
+
+      window.location.reload();
+      navigate("/conferences/new");
     }
   };
 

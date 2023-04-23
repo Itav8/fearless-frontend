@@ -53,6 +53,7 @@ function PresentationForm() {
     };
 
     const response = await fetch(locationUrl, fetchOptions);
+    
     if (response.ok) {
       const data = await response.json();
 

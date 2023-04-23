@@ -27,7 +27,7 @@ function Nav() {
             </li>
             <li className="nav-itemn">
               <NavLink
-                className="nav-link d-none"
+                className="nav-link"
                 aria-current="page"
                 to="/locations/new"
               >
@@ -36,7 +36,7 @@ function Nav() {
             </li>
             <li className="nav-item">
               <NavLink
-                className="nav-link active d-none"
+                className="nav-link"
                 aria-current="page"
                 to="/conferences/new"
               >
@@ -45,7 +45,7 @@ function Nav() {
             </li>
             <li className="nav-item">
               <NavLink
-                className="nav-link "
+                className="nav-link"
                 aria-current="page"
                 to="/presentations/new"
               >
